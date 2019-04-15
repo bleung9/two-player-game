@@ -9,7 +9,7 @@ class Game
 
   def play
     current_player = @player1
-    while (!self.game_over)
+    while (!game_over)
       puts "-----------------NEW TURN------------------"
       turn = TurnManager.new(current_player)
       turn.start_turn
@@ -23,6 +23,8 @@ class Game
       puts "Player 1 wins!"
     end
   end
+
+  private
 
   def game_over
     puts "Player 1 has #{@player1.lives} lives. Player 2 has #{@player2.lives} lives."

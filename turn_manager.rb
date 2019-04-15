@@ -5,6 +5,15 @@ class TurnManager
     @current_player = player 
   end
 
+  def start_turn
+    answer = generate_question
+    display_question(answer[0], answer[1])
+    guess = take_guess.to_i
+    correct_guess = validate_guess(guess, answer[0] + answer[1])
+  end
+
+  private 
+
   def take_guess
     puts "#{@current_player.name}, please input your guess: "
     guess = gets.chomp
@@ -28,13 +37,6 @@ class TurnManager
     else
       puts "CORRECT ANSWER!  #{@current_player.name} STILL HAS #{@current_player.lives} LIVES REMAINING!"
     end
-  end
-
-  def start_turn
-    answer = self.generate_question
-    self.display_question(answer[0], answer[1])
-    guess = self.take_guess.to_i
-    correct_guess = self.validate_guess(guess, answer[0] + answer[1])
   end
 
 end
