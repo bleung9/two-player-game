@@ -8,7 +8,7 @@ class TurnManager
   def start_turn
     answer = generate_question
     display_question(answer[0], answer[1])
-    guess = take_guess.to_i
+    guess = take_guess
     correct_guess = validate_guess(guess, answer[0] + answer[1])
   end
 
@@ -16,7 +16,7 @@ class TurnManager
 
   def take_guess
     puts "#{@current_player.name}, please input your guess: "
-    guess = gets.chomp
+    guess = gets.chomp.to_i
     return guess
   end
 
